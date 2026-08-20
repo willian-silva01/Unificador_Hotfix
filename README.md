@@ -7,6 +7,10 @@
 [![Tests](https://img.shields.io/badge/tests-20%20passing-brightgreen)](tests/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
+<p align="center">
+  <img src="docs/img/tela-resultado.png" alt="Tela do Hotfix Unifier após unificar duas hotfixes: aviso da ordem aplicada e botão de download do arquivo unificado" width="620">
+</p>
+
 ---
 
 ## O problema
@@ -44,6 +48,12 @@ Uma interface web onde você joga todos os arquivos de uma vez e recebe um únic
 - **Ordem manual quando a heurística não basta** — dá para fixar a sequência de
   arquivos específicos (ex.: um `UPDATE` que precisa rodar antes de uma procedure),
   com prévia da ordem final em tempo real.
+
+<p align="center">
+  <img src="docs/img/tela-ordem-manual.png" alt="Painel de ordem manual com seletores numerados e a prévia da sequência final dos arquivos" width="620">
+  <br>
+  <em>A prévia mostra a sequência resultante antes de você gerar o arquivo.</em>
+</p>
 
 ## Ordem de execução aplicada
 
@@ -97,7 +107,8 @@ python -m pytest tests -q
 ├── examples/           # Hotfixes de exemplo (sintéticas), uma por categoria
 ├── tests/              # Suíte pytest
 ├── docs/
-│   └── DOCUMENTACAO.md # Documentação técnica detalhada
+│   ├── DOCUMENTACAO.md # Documentação técnica detalhada
+│   └── img/            # Capturas de tela usadas no README
 └── scripts/            # Publicação como serviço no Windows (opcional)
 ```
 
