@@ -75,7 +75,7 @@ O Hotfix Unifier resolve isso automaticamente:
 
 ## 3. Como usar
 
-1. Acesse a URL do servidor (ex.: `http://IP-DA-MAQUINA:8501`).
+1. Acesse a URL da aplicação (ex.: `http://localhost:8501`).
 2. Selecione até 20 arquivos `.sql`, `.sp` e/ou `.txt` (pode arrastar vários de uma vez).
 3. Clique em **Unificar Hotfix**.
 4. Se algum arquivo for inválido, a unificação é **cancelada** e o erro aponta
@@ -283,15 +283,16 @@ o `SET TERM`.
 
 ## 9. Implantação
 
-A aplicação roda como um processo Streamlit (`streamlit run src/app.py`), registrado como
-uma **Tarefa Agendada do Windows** chamada `HotfixUnifier`, configurada para:
+A aplicação pode ser publicada como um processo Streamlit (`streamlit run src/app.py`)
+registrado como uma **Tarefa Agendada do Windows** chamada `HotfixUnifier`, configurada
+para:
 
 - Iniciar sozinha no boot do PC, mesmo sem ninguém logado (roda como `SYSTEM`).
 - Reiniciar automaticamente até 3 vezes se cair.
 - Ficar acessível na rede local pela porta `8501` (liberada no Firewall do Windows).
 
-Colegas acessam direto pelo navegador em `http://IP-DA-MAQUINA:8501`, sem precisar
-instalar nada.
+Assim, qualquer máquina da mesma rede acessa direto pelo navegador em
+`http://IP-DA-MAQUINA:8501`, sem precisar instalar nada.
 
 **Gerenciamento (precisa de PowerShell como Administrador):**
 
@@ -349,4 +350,4 @@ sozinho em produção.
 | Banco de dados | Nenhum |
 | Autenticação | Nenhuma |
 | Contêineres | Não utilizado |
-| Hospedagem | Processo local, exposto na rede interna via Tarefa Agendada do Windows |
+| Hospedagem | Processo local; opcionalmente exposto na rede via Tarefa Agendada do Windows |

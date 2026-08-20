@@ -15,20 +15,21 @@
 
 ## O problema
 
-No suporte a ERP, uma mesma demanda raramente vem em um arquivo só. Um ciclo de
-correções acumula vários arquivos soltos — `ajuste_estoque.sp`, `001_tabela.sql`,
-`nota.txt` — e alguém precisa executar cada um, **na ordem certa**, em cada cliente.
+Uma correção de banco raramente cabe em um arquivo só. Um ciclo de manutenção
+acumula vários arquivos soltos — `ajuste_estoque.sp`, `001_tabela.sql`, `nota.txt`
+— e todos precisam ser executados **na ordem certa**.
 
-A ordem não é opcional: objetos de banco dependem uns dos outros.
+A ordem não é uma preferência: é uma restrição do próprio banco, porque os objetos
+dependem uns dos outros.
 
-- Uma `PROCEDURE` que lê uma coluna nova quebra se o `ALTER TABLE` não rodou antes.
-- Uma procedure que chama outra quebra se a *assinatura* da chamada não existe ainda.
-- Uma `TRIGGER` ou `VIEW` quebra se a procedure/tabela que ela usa ainda não está lá.
+- Uma `PROCEDURE` que lê uma coluna nova falha se o `ALTER TABLE` não rodou antes.
+- Uma procedure que chama outra falha se a *assinatura* da chamada ainda não existe.
+- Uma `TRIGGER` ou `VIEW` falha se a procedure/tabela que ela usa ainda não está lá.
 
-Na prática isso vira: rodar, tomar erro, voltar, reordenar na mão, rodar de novo —
-repetido cliente a cliente. E quando uma correção nova reescreve uma procedure que já
-tinha sido corrigida no ciclo anterior, alguém precisa lembrar **qual das duas versões
-é a boa**.
+Determinar essa ordem manualmente é trabalho repetitivo e propenso a erro, e o custo
+cresce com o número de arquivos. Some a isso o versionamento: quando uma correção nova
+reescreve uma procedure já ajustada em um ciclo anterior, é preciso saber **qual das
+duas versões vale**.
 
 ## A solução
 
