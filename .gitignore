@@ -1,0 +1,28 @@
+# === Conteúdo sensível (NUNCA versionar) ===
+# Hotfixes reais de produção usadas em teste local — código proprietário.
+# Os exemplos públicos ficam em examples/ (sintéticos).
+Hotfix/
+hotfix_unifier/
+*.log
+
+# Configuração local de ferramentas (contém caminhos/usuário da máquina)
+.claude/
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Artefatos gerados
+*.pdf
+Hotfix_Unificada.sql

@@ -1,0 +1,11 @@
+/* Exemplo sintetico - Hotfix Unifier
+   Categoria esperada: 6 - AJUSTES FINAIS
+
+   Arquivo .txt e aceito da mesma forma que .sql/.sp: o que importa
+   e o conteudo ser SQL reconhecivel, nao a extensao. */
+
+UPDATE PEDIDOS SET DESCONTO_NEGOCIADO = 0 WHERE DESCONTO_NEGOCIADO IS NULL;
+
+GRANT EXECUTE ON PROCEDURE CALC_TOTAL_PEDIDO TO PUBLIC;
+
+GRANT SELECT ON VW_PEDIDOS_ABERTOS TO PUBLIC;
